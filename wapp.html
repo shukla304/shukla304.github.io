@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <title>WebApp</title>
+    <link rel="stylesheet" href="wstyle.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h3>WeatherApp</h3>
+        </div>
+        <ul class="navlinks">
+            <li><a href="#">Home </a></li>
+            <li><a href="#">History </a> </li>
+        </ul>
+    </nav>
+
+    <div class="search-bar">
+        <div class="title">
+            <label>Enter City Name</label>
+        </div>
+        <div class="search-box">
+            <form action="#">
+                <input type="text" id="city" placeholder="Enter City Name">
+                <input type="submit" id="submitreq" value="Submit">
+            </form>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="wrapper">
+        <div class="apidata">
+            <h1 id="search-result">Search Result:</h1>
+            <h1 id="name"></h1>
+            <h1 id="temp"></h1>
+            <h1 id="wdisc"></h1>
+            <img id="tempimage" src="#">
+            <input type="submit" id="converttof" value="F&deg">
+            <input type="submit" id="converttoc" value="C&deg">
+
+
+        </div>
+        <div class="history">
+                <h1 id="history-result">Recent Search:</h1>
+                
+            <h1 id="his1"></h1>
+            <h1 id="his2"></h1>
+            <h1 id="his3"></h1>
+            <h1 id="his4"></h1>
+            <li class="clear"><a href="#" onclick="ClearFunction();">Clear </a></li>
+
+        </div>
+    </div>
+</body>
+
+
+<script src="xhr.js" defer></script>
+<script>
+    var stringd = localStorage.getItem('keys')
+    var arr = JSON.parse("[" + stringd + "]");
+    const tempkeyd = localStorage.getItem('tempkeys')
+    const arrtempkey = JSON.parse("[" + tempkeyd + "]");
+    for (i = arr[0].length, j = arrtempkey[0].length; i >= arr[0].length; i--) {
+        document.getElementById("his1").innerHTML = arr[0][--i] + ' ' + arrtempkey[0][--j] + '| C';
+        document.getElementById("his2").innerHTML = arr[0][--i] + ' ' + arrtempkey[0][--j] + '| C';
+        document.getElementById("his3").innerHTML = arr[0][--i] + ' ' + arrtempkey[0][--j] + '| C';
+        document.getElementById("his4").innerHTML = arr[0][--i] + ' ' + arrtempkey[0][--j] + '| C';
+        break;
+    }
+
+    <!-- Clear DATA -->
+    function ClearFunction(){
+        window.localStorage.clear();
+    }
+</script>
+
+</html>
